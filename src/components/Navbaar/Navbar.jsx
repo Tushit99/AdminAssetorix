@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import style from "./Navbar.module.css";
 import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { Link } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { FaHome } from "react-icons/fa";
 import { BsFillInboxesFill } from "react-icons/bs";
 import { FaUserAlt } from "react-icons/fa";
 import { RiAdminFill } from "react-icons/ri";
-import { Heading, border } from '@chakra-ui/react';
+import { Box, Button, Heading, border } from '@chakra-ui/react';
 
 
 const Navbar = ({ handleToggle, toggle,backgroundcolor }) => {
@@ -20,29 +20,29 @@ const Navbar = ({ handleToggle, toggle,backgroundcolor }) => {
       </div>
       <div>
         <div className={style.page_links}>
-          <div> 
+          <Box> 
             <Link to={"/"}> <FaHome size={"20px"} /> </Link>
-            <Link style={{ display: `${toggle ? "none" : "block"}` }} to={"/"} > Home </Link>
-          </div> 
-          <div>
+            <Link style={{ display: `${toggle ? "none" : "block"}` }} to={"/"} > Dasboard </Link>
+          </Box> 
+          <Box>
             <Link to={"/property"}> <BsFillInboxesFill size={"20px"} /> </Link>
             <Link style={{ display: `${toggle ? "none" : "block"}` }} to={"/property"} > Property </Link>
-          </div>
-          <div> 
+          </Box>
+          <Box> 
             <Link to={"/user"}> <FaUserAlt size={"20px"} /> </Link>
             <Link style={{ display: `${toggle ? "none" : "block"}` }} to={"/user"} > User </Link>
-          </div>
-          <div>
+          </Box>
+          <Box>
             <Link to={"/admin"}> <RiAdminFill size={"20px"} /> </Link>
             <Link style={{ display: `${toggle ? "none" : "block"}` }} to={"/admin"} > Admin </Link>
-          </div>
+          </Box>
         </div>
       </div>
       {/* opening and closing button */}
       <div>
-        <button className={style.closer_button} style={{border:`2px solid ${backgroundcolor=="dark" ? "blue" : "white"}`}} onClick={handleToggle}>
-          {toggle ? <MdKeyboardDoubleArrowRight size={"24px"} color={'white'} /> : <MdKeyboardDoubleArrowLeft size={"24px"} color={'white'} />}
-        </button>
+        <Button variant={"unstyled"} className={style.closer_button} border={"2px solid rgb(215, 215, 215)"} backgroundColor={`${backgroundcolor=="dark" ? "rgb(18, 25, 38)" : "white"}`} onClick={handleToggle}> 
+          {toggle ? <MdKeyboardDoubleArrowRight size={"24px"} /> : <MdKeyboardDoubleArrowLeft size={"24px"} />} 
+        </Button>
       </div>
     </div>
   )

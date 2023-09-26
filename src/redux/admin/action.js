@@ -15,6 +15,6 @@ export const getProduct = () => async (dispatch) => {
   } catch (err) {
     dispatch({ type: USER_DATA_ERROR });
   }
-};
+}; 
  
 
