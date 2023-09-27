@@ -6,7 +6,7 @@ import { FaHome } from "react-icons/fa";
 import { BsFillInboxesFill } from "react-icons/bs";
 import { FaUserAlt } from "react-icons/fa";
 import { RiAdminFill } from "react-icons/ri";
-import { Box, Button, Heading, border } from '@chakra-ui/react';
+import { Box, Button, Heading } from '@chakra-ui/react';
 
 
 const Navbar = ({ handleToggle, toggle,backgroundcolor }) => {
@@ -18,23 +18,23 @@ const Navbar = ({ handleToggle, toggle,backgroundcolor }) => {
           {toggle ? "A" : "Assetorix"}  
         </Heading> 
       </div>
-      <div>
+      <div> 
         <div className={style.page_links}>
           <Box> 
             <Link to={"/"}> <FaHome size={"20px"} /> </Link>
-            <Link style={{ display: `${toggle ? "none" : "block"}` }} to={"/"} > Dasboard </Link>
+            <Link style={{ display: `${toggle ? "none" : "block"}`, fontSize:"15px"}} to={"/"} > Dasboard </Link>
           </Box> 
           <Box>
             <Link to={"/property"}> <BsFillInboxesFill size={"20px"} /> </Link>
-            <Link style={{ display: `${toggle ? "none" : "block"}` }} to={"/property"} > Property </Link>
+            <Link style={{ display: `${toggle ? "none" : "block"}`, fontSize:"15px"}} to={"/property"} > Property </Link>
           </Box>
           <Box> 
             <Link to={"/user"}> <FaUserAlt size={"20px"} /> </Link>
-            <Link style={{ display: `${toggle ? "none" : "block"}` }} to={"/user"} > User </Link>
+            <Link style={{ display: `${toggle ? "none" : "block"}`, fontSize:"15px"}} to={"/user"} > User </Link>
           </Box>
           <Box>
             <Link to={"/admin"}> <RiAdminFill size={"20px"} /> </Link>
-            <Link style={{ display: `${toggle ? "none" : "block"}` }} to={"/admin"} > Admin </Link>
+            <Link style={{ display: `${toggle ? "none" : "block"}`, fontSize:"15px"}} to={"/admin"} > Admin </Link>
           </Box>
         </div>
       </div>
