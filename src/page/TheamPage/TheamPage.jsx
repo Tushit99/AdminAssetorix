@@ -1,9 +1,15 @@
-import { Box, Button } from "@chakra-ui/react";
-import React from "react";
+import { Box } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import {GiNightSleep} from "react-icons/gi"; 
 import {BsFillSunFill} from "react-icons/bs"; 
 
 const TheamPage = ({ backgroundcolor, handlechange }) => {
+    const [justifyContent, setJustifyContent] = useState("left-justified"); 
+    
+    useEffect(()=>{
+        setJustifyContent(backgroundcolor === "light" ? "leftjustified" :"rightjustified"); 
+    },[backgroundcolor])
+
     return (
         <Box
             onClick={handlechange}
@@ -13,13 +19,12 @@ const TheamPage = ({ backgroundcolor, handlechange }) => {
             h={"34px"}
             cursor={"pointer"}
             padding={"2px"}
-            display={"flex"}
-            alignItems={"center"}
-            justifyContent={backgroundcolor == "light" ? "left" : "right"}
-            //   border={"2px solid black"} 
+            display={"flex"} 
+            alignItems={"center"} 
+            className={`smother ${justifyContent}`} 
             backgroundColor={"rgb(183, 183, 183)"} 
             bottom={"20px"}
-            left={"5px"}
+            left={"5px"} 
         >
             <button className={`theam_btn ${backgroundcolor == "light" ? "dark" : "light"}`}>{backgroundcolor == "light" ? <BsFillSunFill /> : <GiNightSleep />}</button>
         </Box>

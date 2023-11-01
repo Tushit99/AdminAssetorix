@@ -32,8 +32,7 @@ const ResidentialBuy = () => {
   const [propertyType, setPropertyType] = useState(paramProperty || []);
   const [furnished, setfurnish] = useState(paramFurnish || []);
   const [wishlist, setWishlist] = useState([]);
-  const location = useLocation();
-  // const toast = useToast();
+  const location = useLocation(); 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
   const [message, setMessage] = useState("");
@@ -49,7 +48,7 @@ const ResidentialBuy = () => {
           console.log(e.data.msg,e.data);
           if (e.data.msg) {
             setMessage(e.data.msg);
-          }
+          } 
           // console.log(e.data);
         });
     } catch (err) {
@@ -564,7 +563,7 @@ const ResidentialBuy = () => {
 
         {/* =========================== product List ====================== */}
         <Box flex={6}>
-          {console.log(message)};
+          {console.log(message)}
           <Heading size={"md"}> {message !== "" && message} </Heading>
           <Box
             w={"100%"}

@@ -4,6 +4,16 @@
   min-height: 100vh; 
 }
 
+*::selection{
+  background-color: rgb(255, 196, 0); 
+  color: rgb(0, 0, 0); 
+}
+
+select *{
+  background-color: white; 
+  color: black; 
+}
+
 .App>div:nth-child(1){
   transition: all 0.4s ease-in-out;  
   border: 1px solid rgb(215, 215, 215) ;  
@@ -25,14 +35,29 @@
   border-radius: 50%;     
 }
 
+.smother{ 
+  transition: justify-content 4s ease-in-out;
+}
+
+.leftjustified {
+  justify-content: flex-start;  
+}
+
+.rightjustified { 
+  justify-content: flex-end; 
+
+}
+
 .dark{
   background-color: rgb(18, 25, 38) ; 
   color: white;  
+  transition: all 1s; 
 }
 
 .light{
   background-color: white; 
   color: rgb(18, 25, 38); 
+  transition: all 1s;  
 }
 
 

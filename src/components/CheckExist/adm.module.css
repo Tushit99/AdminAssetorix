@@ -1,0 +1,25 @@
+.slideInLeft {
+  transition: transform 0.3s ease-in-out;
+  border: 2px solid black;
+}
+
+.slideInRight {
+  transition: transform 0.3s ease-in-out;
+  border: 2px solid black;
+}
+
+/* hover effect */
+
+.slideInLeft:hover {
+  transform: scale(1.2);
+  color: rgb(0, 50, 153);
+  border: 2px solid rgb(0, 50, 153);
+}
+
+.slideInRight:hover {
+  transform: scale(1.2);
+  color: rgb(0, 50, 153);
+  border: 2px solid rgb(0, 50, 153); 
+} 
+
+/* entrance effect */

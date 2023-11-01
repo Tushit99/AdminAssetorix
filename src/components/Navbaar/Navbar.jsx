@@ -1,6 +1,6 @@
 import React from 'react';
 import style from "./Navbar.module.css";
-import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
+import { MdAddHomeWork, MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import { FaHome } from "react-icons/fa";
 import { BsFillInboxesFill } from "react-icons/bs";
@@ -36,15 +36,19 @@ const Navbar = ({ handleToggle, toggle,backgroundcolor }) => {
             <Link to={"/admin"}> <RiAdminFill size={"20px"} /> </Link>
             <Link style={{ display: `${toggle ? "none" : "block"}`, fontSize:"15px"}} to={"/admin"} > Admin </Link>
           </Box>
+          <Box>
+            <Link to={"/Postproperty"}> <MdAddHomeWork size={"20px"} /> </Link>
+            <Link style={{ display: `${toggle ? "none" : "block"}`, fontSize:"15px"}} to={"/Postproperty"} > Post Property </Link>
+          </Box>
         </div>
       </div>
       {/* opening and closing button */}
       <div>
-        <Button variant={"unstyled"} className={style.closer_button} border={"2px solid rgb(215, 215, 215)"} backgroundColor={`${backgroundcolor=="dark" ? "rgb(18, 25, 38)" : "white"}`} onClick={handleToggle}> 
+        <Button variant={"unstyled"} zIndex={1} className={style.closer_button} border={"2px solid rgb(215, 215, 215)"} backgroundColor={`${backgroundcolor=="dark" ? "rgb(18, 25, 38)" : "white"}`} onClick={handleToggle}> 
           {toggle ? <MdKeyboardDoubleArrowRight size={"24px"} /> : <MdKeyboardDoubleArrowLeft size={"24px"} />} 
         </Button>
       </div>
-    </div>
+    </div> 
   )
 }
 

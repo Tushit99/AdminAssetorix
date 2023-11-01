@@ -1,0 +1,39 @@
+.post_property{
+  margin-top: 20px;  
+}
+
+.post_property > *:nth-child(2) {
+  width: 94%; 
+  margin: auto ;     
+  border: 1px solid rgb(220, 220, 255);
+  padding: 20px 30px;
+  border-radius: 12px;
+  /* border: 2px solid rgb(0, 60, 255); */
+}
+ 
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; 
+}
+
+
+.setbtn { 
+  border-radius: 0px;
+  background-color: rgb(235, 248, 255);
+  color: rgb(0, 0, 0);
+  padding: 4px 10px; 
+  border: 1px solid rgba(0, 8, 255, 0.236);
+}
+
+.btn {
+  border-radius: 0px;  
+  padding: 4px 10px;
+  border: 1px solid rgb(229, 229, 252);
+}  
+
+.btn:hover{
+  border: 1px solid rgba(0, 8, 255, 0.236);
+}
+  

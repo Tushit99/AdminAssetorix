@@ -1,8 +1,15 @@
+import { Box, Heading } from '@chakra-ui/react';
 import React from 'react'
 
 const UserPage = () => {
+
+
   return (
-    <div>UserPage</div>
+    <Box>
+      <Heading> User Detail </Heading>
+      <Box>
+      </Box>
+    </Box>
   )
 }
 

@@ -1,0 +1,28 @@
+
+.myFormBox {
+  display: grid;
+  gap: 14px;
+  width: 100%;
+}
+
+.backimg{
+  background-image: url("https://images.pexels.com/photos/3912297/pexels-photo-3912297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); 
+  background-size: cover;  
+} 
+
+.name *{
+  text-shadow: 0 0 3px #ffffff;
+}
+
+.name>*:nth-child(1) sup{
+  font-size: medium; 
+  border: 2px solid black; 
+  margin-top: -40px ;
+}
+
+
+.formbox {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+}

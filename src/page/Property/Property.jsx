@@ -10,7 +10,7 @@ const Property = () => {
   return (
     <Box padding={"20px 0"} w={"98%"} margin={"auto"} >
       <Heading size={"lg"}> Property Posted </Heading>
-      <Box>
+      <Box margin={"40px auto"}>
         <Tabs isFitted variant='enclosed'>
           <TabList>
             <Tab _selected={{ color: 'white', bg: 'blue.500' }}> Residential Buy </Tab>
