@@ -1,18 +1,60 @@
 import axios from "axios";
-import { USER_DATA_ERROR, USER_DATA_LOADING, USER_LOGIN } from "./actionType"; 
+import {
+  USER_DATA_ERROR,
+  USER_DATA_LOADING,
+  USER_LOGIN,
+  USER_SIGUP,
+} from "./actionType";
 
-
-export const userDetail = () => async (dispatch) => {
+export const userRegisterAdmin = (param) => async (dispatch) => {
   try {
     dispatch({ type: USER_DATA_LOADING });
-    let res = await axios.get("api").then((res) => {
-      dispatch({ type: USER_LOGIN, payload: res.data });
-      return res.data;
-    }); 
-    console.log(res);  
+    await axios
+      .post(`${process.env.REACT_APP_URL}/admin/register`, param)
+      .then((res) => {
+        localStorage.setItem("astadid", res.data.id);
+        localStorage.setItem("astadName", res.data.name);
+        localStorage.setItem("astadToken", res.data.token);
+        dispatch({ type: USER_SIGUP, payload: res.data });
+        return res.data;
+      });
   } catch (err) {
     dispatch({ type: USER_DATA_ERROR });
   }
-}; 
- 
+};
 
+export const userLoinAdmin = (param) => async (dispatch) => {
+  try {
+    dispatch({ type: USER_DATA_LOADING });
+    await axios
+      .post(`${process.env.REACT_APP_URL}/admin/login`, param)
+      .then((res) => {
+        localStorage.setItem("astadid", res.data.id);
+        localStorage.setItem("astadName", res.data.name);
+        localStorage.setItem("astadToken", res.data.token);
+        dispatch({ type: USER_LOGIN, payload: res.data });
+        return res.data;
+      });
+  } catch (err) {
+    dispatch({ type: USER_DATA_ERROR });
+  }
+};
+
+export const adminPrelogin = (param) => async (dispatch) => {
+  try {
+    dispatch({ type: USER_DATA_LOADING });
+    await axios
+      .get(`${process.env.REACT_APP_URL}/admin/`, { headers: param })
+      .then((res) => {
+        // console.log(res.data);
+        let id = localStorage.getItem("astadid");
+        let token = localStorage.getItem("astadToken");
+        localStorage.setItem("astadName", res.data.name);
+        dispatch({ type: USER_LOGIN, payload: { ...res.data, id, token } });
+        return res.data;
+      });
+    // console.log(res);
+  } catch (err) {
+    dispatch({ type: USER_DATA_ERROR }); 
+  }
+};

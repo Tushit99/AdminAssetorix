@@ -10,19 +10,20 @@
   background-size: cover;  
 } 
 
-.name *{
+.name h3{
   text-shadow: 0 0 3px #ffffff;
 }
 
-.name>*:nth-child(1) sup{
-  font-size: medium; 
-  border: 2px solid black; 
-  margin-top: -40px ;
+.name>*:nth-child(1) span{
+  font-size: large; 
+  position: relative;
+  bottom: 5px; 
+  left: -8px;  
 }
 
 
 .formbox {
   display: grid;
-  gap: 10px;
+  gap: 5px;
   width: 100%;
 }

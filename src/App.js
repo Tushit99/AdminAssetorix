@@ -4,13 +4,18 @@ import MainRoute from "./components/MainRoute/MainRoute";
 import Navbar from "./components/Navbaar/Navbar";
 import TheamPage from "./page/TheamPage/TheamPage";
 import { Box } from "@chakra-ui/react";
-import { useSelector } from "react-redux"; 
-import UserCheck from "./components/CheckExist/UserCheck";
+import { useDispatch, useSelector } from "react-redux";  
+import { adminPrelogin } from "./redux/admin/action";
+import Loader from "./components/Loader/Loader";
+import { useNavigate } from "react-router-dom";
+
 
 function App() {
   const userdetail = useSelector((state) => state.admindetail);
   const [toggle, setToggle] = useState(false);
   const [backgroundcolor, setbackgroundcolor] = useState("light");
+  const dispatch = useDispatch();
+  const navigate = useNavigate(); 
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -21,6 +26,25 @@ function App() {
     if (color === "dark" || color === "light") {
       setbackgroundcolor(color);
     }
+
+    let id = localStorage.getItem("astadid");
+    let token = localStorage.getItem("astadToken");
+
+    let obj = {
+      id,
+      authorization: token,
+    };
+
+    if (id && token) {
+      console.log("skjvnsjn", id, token);
+      dispatch(adminPrelogin(obj)); 
+    }
+
+    if(userdetail.name.length>0){
+      console.log("skjvnsjn", id, token);
+      navigate("/");  
+    }
+
   }, []);
 
   const handlechange = () => {
@@ -30,29 +54,35 @@ function App() {
   };
 
   return (
-    <Box>
-      {userdetail.id && userdetail.token ? (
-        <Box as={"div"} className={`${"App"} ${backgroundcolor}`}>
-          <div style={{ flex: `${toggle ? 1 : 4}` }}>
-            <Navbar
-              toggle={toggle}
-              backgroundcolor={backgroundcolor}
-              handleToggle={handleToggle}
-            />
-          </div>
-          <div style={{ flex: 20 }}>
-            <MainRoute />
-            {/* theam button */}
-            <TheamPage
-              handlechange={handlechange}
-              backgroundcolor={backgroundcolor}
-            />
-          </div>
-        </Box>
+    <> 
+      {userdetail.isLoading ? (
+        <Loader />
       ) : (
-        <UserCheck />
+        <Box>
+          {userdetail?.token?.length > 0 ? (
+            <Box as={"div"} className={`${"App"} ${backgroundcolor}`}>
+              <div style={{ flex: `${toggle ? 1 : 4}` }}>
+                <Navbar
+                  toggle={toggle}
+                  backgroundcolor={backgroundcolor}
+                  handleToggle={handleToggle}
+                />
+              </div>
+              <div style={{ flex: 20 }}>
+                <MainRoute />
+                {/* theam button */}
+                <TheamPage
+                  handlechange={handlechange}
+                  backgroundcolor={backgroundcolor}
+                />
+              </div>
+            </Box>
+          ) : (
+            <MainRoute /> 
+          )}
+        </Box>
       )}
-    </Box>
+    </>
   );
 }
 
