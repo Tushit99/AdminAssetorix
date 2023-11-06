@@ -15,40 +15,47 @@ const AdminPage = () => {
   const [userRole, setUserRole] = useState("");
   const [inp, setInp] = useState(Inputdetail || "");
   const [page, setPage] = useState(prePage || 1);  
-  const [box1, setBoxone] = useState(false); 
+  const [loading, setLoading] = useState(false);   
 
   const allAdmin = async () => {
     try {
-      let id = localStorage.getItem("astadid");
-      let token = localStorage.getItem("astadToken");
+      // let id = localStorage.getItem("astadid");
+      // let token = localStorage.getItem("astadToken");
 
       let obj = {
-        id,
-        authorization: token,
-        'Content-Type': 'application/json',
+        id: userdetail.id, 
+        authorization: userdetail.token, 
+        'Content-Type': 'application/json', 
       };
-
+      setLoading(true); 
       await axios
         .get(`${process.env.REACT_APP_URL}/admin/all`, {
           headers: obj,
         })
         .then((e) => {
-          setData(e.data.data);
+          setData(e.data.data);  
+          setLoading(false);  
         })
-        .catch((err) => console.log(err));
+        .catch((err) =>{
+          console.log(err); 
+          setLoading(false);   
+        });
     } catch (error) {
       console.log(error);
+      setLoading(false);   
     }
   };
 
+  console.log(userdetail); 
+
   const handleBlocking = async (myid, status) => {
     try {
-      let id = localStorage.getItem("astadid");
-      let token = localStorage.getItem("astadToken");
+      // let id = localStorage.getItem("astadid");
+      // let token = localStorage.getItem("astadToken");
 
       let obj = {
-        id,
-        authorization: token,
+        id: userdetail.id, 
+        authorization: userdetail.token, 
         'Content-Type': 'application/json',
       };
 
@@ -57,14 +64,14 @@ const AdminPage = () => {
         status
       }
 
-      console.log(status); 
-
-      
+      setLoading(true);   
       await axios.post(`${process.env.REACT_APP_URL}/admin/block`, body, { headers: obj }).then((e) => {
         console.log(e.data); 
+        setLoading(false);   
       })
     } catch (err) { 
-      console.log(err)
+      console.log(err); 
+      setLoading(false);   
     }
   }
 

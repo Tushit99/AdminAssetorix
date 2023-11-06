@@ -5,10 +5,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { BsCheckLg } from "react-icons/bs";
 import { BiPlus } from "react-icons/bi";
-import { BsFillBookmarkHeartFill } from 'react-icons/bs'; 
+import { BsFillBookmarkHeartFill } from 'react-icons/bs';
 
 
-const CommercialRent = () =>{ 
+const CommercialRent = () => {
     const [list, setList] = useState([]);
     const [serchParam, setSearchParam] = useSearchParams();
     const paramBhk = serchParam.getAll("bhk");
@@ -18,20 +18,20 @@ const CommercialRent = () =>{
     const [propertyType, setPropertyType] = useState(paramProperty || []);
     const [furnished, setfurnish] = useState(paramFurnish || []);
     const [wishlist, setWishlist] = useState([]);
-    const location = useLocation(); 
+    const location = useLocation();
     const toast = useToast();
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const btnRef = useRef(); 
+    const btnRef = useRef();
 
     const residentialfun = async () => {
         try {
             await axios.get(`${process.env.REACT_APP_URL}/property/rent/commercial${location.search}`).then((e) => {
-                setList(e.data.data); 
+                setList(e.data.data);
                 // console.log(e.data); 
             })
-        } catch (err) { 
-            console.log(err);  
-        }  
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     useEffect(() => {
@@ -75,7 +75,7 @@ const CommercialRent = () =>{
             }
         });
     }
- 
+
 
     useEffect(() => {
         let param = {}
@@ -85,11 +85,11 @@ const CommercialRent = () =>{
         furnished && (param.furnished = furnished);
         setSearchParam(param);
     }, [bhk, propertyType, furnished]);
- 
+
 
 
     return (
-        <Box > 
+        <Box >
             {/* mobile bar */}
             <Box width={"100%"} display={{ base: "flex", md: "none" }} position={"sticky"} top={50} zIndex={10} backgroundColor={"white"} left={0} right={0} >
                 <Box flex={1} border={"1px solid rgb(199, 199, 199)"} >
@@ -177,26 +177,26 @@ const CommercialRent = () =>{
                         {list.map((e, index) => {
                             const colorstate = wishlist && Array.isArray(wishlist) && wishlist.includes(`${e._id}`);
                             return (
-                                <Box position={"relative"} key={index}  > 
+                                <Box position={"relative"} key={index}  >
                                     {/* <Link to={`/residential_buy/${e._id}`} > */}
-                                        <Box className={style.property_box}>
-                                            <Box position={"relative"}>
-                                                <Image src="https://mediacdn.99acres.com/582/0/11640476F-1383637447-Amrit_House_-_Sant_Nagr_Delhi.jpeg" w={"100%"} alt="property image" />
-                                            </Box>
-                                            <Heading className={style.head_line} size={{ base: "xs", md: "sm" }} textAlign={"left"} color={"rgb(37, 37, 37)"} >  {e.address.houseNumber && e.address.houseNumber} {e.address.apartmentName && e.address.apartmentName} {e.address.locality && e.address.locality} </Heading>
-                                            <Text fontSize={{ base: "xs", md: "sm" }} > Price: {e.countryCurrency}{e.price?.toLocaleString("en-IN")} </Text>
+                                    <Box className={style.property_box}>
+                                        <Box position={"relative"}>
+                                            <Image src="https://mediacdn.99acres.com/582/0/11640476F-1383637447-Amrit_House_-_Sant_Nagr_Delhi.jpeg" w={"100%"} alt="property image" />
                                         </Box>
+                                        <Heading className={style.head_line} size={{ base: "xs", md: "sm" }} textAlign={"left"} >  {e.address.houseNumber && e.address.houseNumber} {e.address.apartmentName && e.address.apartmentName} {e.address.locality && e.address.locality} </Heading>
+                                        <Text fontSize={{ base: "xs", md: "sm" }} > Price: {e.countryCurrency}{e.price?.toLocaleString("en-IN")} </Text>
+                                    </Box>
                                     {/* </Link> */}
                                 </Box>
                             )
                         })}
-                    </Box>   
-          
+                    </Box>
+
                 </Box>
             </Flex>
         </Box>
     )
 }
 
-export default CommercialRent;  
+export default CommercialRent;
 

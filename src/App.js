@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { adminPrelogin } from "./redux/admin/action";
 import Loader from "./components/Loader/Loader";
 import { useNavigate } from "react-router-dom";
+import UserDetailInfo from "./components/UserDetail/UserDetailInfo";
 
 
 function App() {
@@ -58,7 +59,8 @@ function App() {
       {userdetail.isLoading ? (
         <Loader />
       ) : (
-        <Box>
+        <Box> 
+          <UserDetailInfo backgroundcolor={backgroundcolor} />
           {userdetail?.token?.length > 0 ? (
             <Box as={"div"} className={`${"App"} ${backgroundcolor}`}>
               <div style={{ flex: `${toggle ? 1 : 4}` }}>

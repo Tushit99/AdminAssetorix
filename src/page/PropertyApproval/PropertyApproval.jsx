@@ -1,4 +1,4 @@
-import { Box, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react';
+import { Box, Heading, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react';
 import React, { useState } from 'react'
 import Pending from './Pending/Pending';
 import Approved from './Approved/Approved';
@@ -13,11 +13,12 @@ const PropertyApproval = () => {
     const [loader, setLoader] = useState(false);
 
     return (
-        <Box position={"relative"}>
-            <Box marginTop={10} >
-                <Box display={"flex"} alignItems={"center"} justifyContent={"space-around"}>
+        <Box position={"relative"}> 
+            <Box>
+                <Box display={"flex"} marginTop={4} alignItems={"center"} justifyContent={"space-around"}> 
+                    <Heading as={"h2"} size={"lg"}> Property Approval </Heading>
                 </Box>
-                <Tabs variant='enclosed' borderRadius={0} onChange={() => setDataChange(!datachange)}>
+                <Tabs marginTop={6} variant='enclosed' borderRadius={0} onChange={() => setDataChange(!datachange)}>
                     <TabList display={"flex"} alignItems={"center"} justifyContent={"space-around"} >
                         <Tab color={"auto"} _selected={{ backgroundColor: "rgb(225, 142, 7)", color: "white" }} borderRadius={0} padding={"6px 20px"} > Pending </Tab>
                         <Tab color={"auto"} _selected={{ backgroundColor: "rgb(78, 202, 1)", color: "white" }} borderRadius={0} padding={"6px 20px"} > Approved </Tab>

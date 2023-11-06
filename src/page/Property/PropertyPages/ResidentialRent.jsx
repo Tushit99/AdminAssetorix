@@ -24,7 +24,7 @@ import { BsCheckLg } from "react-icons/bs";
 import { BiPlus } from "react-icons/bi";
 // import { BsFillBookmarkHeartFill } from "react-icons/bs";
 
-const ResidentialRent = () => {
+const ResidentialRent = () => { 
     const [list, setList] = useState([]);
     const [serchParam, setSearchParam] = useSearchParams();
     const paramBhk = serchParam.getAll("bhk");
@@ -595,8 +595,7 @@ const ResidentialRent = () => {
                                         <Heading
                                             className={style.head_line}
                                             size={{ base: "xs", md: "sm" }}
-                                            textAlign={"left"}
-                                            color={"rgb(37, 37, 37)"}
+                                            textAlign={"left"} 
                                         >
                                             {" "}
                                             {e.address.houseNumber && e.address.houseNumber}{" "}

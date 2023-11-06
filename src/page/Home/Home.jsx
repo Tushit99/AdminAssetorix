@@ -1,8 +1,11 @@
+import { Box, Heading } from '@chakra-ui/react';
 import React from 'react'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <Box display={"flex"} alignItems={"center"} justifyContent={"center"} minHeight={"100vh"} w={"100%"} >
+      <Heading size={"xl"} > Welcome to Assetorix Admin Panal </Heading> 
+    </Box>
   )
 }
 

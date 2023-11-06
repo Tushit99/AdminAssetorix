@@ -11,21 +11,21 @@ const UserDetail = ({e, handleVerifieChange, handleBlockChange}) => {
         handleBlockChange(id,val);  
     }
 
-    const handleVerifie = (id,e)=>{ 
+    const handleVerifie = (id,e)=>{  
         let val = e.target.value;  
         handleVerifieChange(id,val);  
     }
 
     useEffect(()=>{
         setBlock(e.isBlocked); 
-        setVerifie(e.isVerified);  
-    },[]);  
+        setVerifie(e.isVerified);   
+    },[e]);  
 
     return (
         <Box textAlign={"left"} className={style.fullbox} > 
             <Avatar name={e.name} boxSize={"100%"} height={"200px"} borderRadius={2} src={e.avatar} />
             <Heading as={"h4"} size={"md"} textAlign={"center"}> {e.name} </Heading>
-            <Text> <span>Listing:</span>  {e.listings} </Text>
+            <Text margin={"2px 0 4px 0"}> <span>Listing:</span>  {e.listings} </Text>
             <Box display={"flex"} alignItems={"center"} marginBottom={2} >
                 <Text width={"50%"} fontWeight={700}>Blocked:</Text>
                 <Select variant='outline' onChange={(a)=>handleBlock(e._id,a)} value={isblock} >

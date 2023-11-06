@@ -599,8 +599,7 @@ const ResidentialBuy = () => {
                     <Heading
                       className={style.head_line}
                       size={{ base: "xs", md: "sm" }}
-                      textAlign={"left"}
-                      color={"rgb(37, 37, 37)"}
+                      textAlign={"left"} 
                     >
                       {" "}
                       {e.address.houseNumber && e.address.houseNumber}{" "}
