@@ -17,7 +17,7 @@ import style from "./Signup.module.css"
 import { useEffect, useState } from 'react'
 import { AtSignIcon } from '@chakra-ui/icons'
 import { useDispatch } from 'react-redux';
-import { userRegisterAdmin } from '../../../../redux/admin/action';
+import { adminPrelogin, userRegisterAdmin } from '../../../../redux/admin/action';
 
 const Signup =()=>{
     const [name, setName] = useState("");

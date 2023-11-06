@@ -19,7 +19,7 @@ import style from "./Login.module.css";
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useDispatch } from 'react-redux';
-import { userLoinAdmin } from '../../../../redux/admin/action';
+import { adminPrelogin, userLoinAdmin } from '../../../../redux/admin/action';
 
 const Login = () => {
     const [numb, setNumb] = useState("");

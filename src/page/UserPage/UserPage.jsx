@@ -25,8 +25,8 @@ const UserPage = () => {
       await axios.get(`${process.env.REACT_APP_URL}/admin/all?role=customer`, { headers: obj }).then((e) => {
         console.log(e.data.data);
         setData(e.data.data);
-        setBlock(e.data.data.isBlocked);
-        setVerifie(e.data.data.isVerified);
+        // setBlock(e.data.data.isBlocked);
+        // setVerifie(e.data.data.isVerified);
         setLoading(false);
       })
     } catch (err) {
