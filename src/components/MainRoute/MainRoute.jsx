@@ -10,6 +10,7 @@ import Signup from '../CheckExist/LoginSignin/Signup/Signup';
 import ErrorPage from '../../page/Error/Error';
 import Home from '../../page/Home/Home';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import PropertyApproval from '../../page/PropertyApproval/PropertyApproval';
 
 const MainRoute = () => {
   return (
@@ -40,7 +41,10 @@ const MainRoute = () => {
           <PrivateRoute>
             <SellForm />
           </PrivateRoute>
-        } />
+        } /> 
+
+        <Route path='/propertyApproval' element={<PropertyApproval />} />
+
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='*' element={<ErrorPage />} />

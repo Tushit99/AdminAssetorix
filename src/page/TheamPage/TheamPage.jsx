@@ -26,7 +26,7 @@ const TheamPage = ({ backgroundcolor, handlechange }) => {
             bottom={"20px"}
             left={"5px"} 
         >
-            <button className={`theam_btn ${backgroundcolor == "light" ? "dark" : "light"}`}>{backgroundcolor == "light" ? <BsFillSunFill /> : <GiNightSleep />}</button>
+            <button className={`theam_btn ${backgroundcolor == "light" ? "darkbt" : "lightbt"}`}>{backgroundcolor == "light" ? <BsFillSunFill /> : <GiNightSleep />}</button>
         </Box>
     );
 };

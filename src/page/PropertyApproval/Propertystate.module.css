@@ -1,0 +1,21 @@
+
+.topsection{
+    display: grid; 
+    grid-template-columns: repeat(3,1fr); 
+    gap: 20px; 
+}
+
+.topsection img{
+    height: 200px; 
+    width: 100%; 
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;   
+}
+
+.topsection>div{
+    text-align: left;   
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;  
+    padding: 20px;  
+}
+
+
+

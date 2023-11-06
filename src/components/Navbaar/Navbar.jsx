@@ -3,11 +3,11 @@ import style from "./Navbar.module.css";
 import { MdAddHomeWork, MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import { FaHome } from "react-icons/fa";
-import { BsFillInboxesFill } from "react-icons/bs";
+import { BsFillInboxesFill, BsHouseCheckFill } from "react-icons/bs";
 import { FaUserAlt } from "react-icons/fa";
 import { RiAdminFill } from "react-icons/ri";
 import { Box, Button, Heading } from '@chakra-ui/react';
-
+ 
 
 const Navbar = ({ handleToggle, toggle,backgroundcolor }) => {
 
@@ -39,6 +39,10 @@ const Navbar = ({ handleToggle, toggle,backgroundcolor }) => {
           <Box>
             <Link to={"/Postproperty"}> <MdAddHomeWork size={"20px"} /> </Link>
             <Link style={{ display: `${toggle ? "none" : "block"}`, fontSize:"15px"}} to={"/Postproperty"} > Post Property </Link>
+          </Box>
+          <Box>
+            <Link to={"/Postproperty"}> <BsHouseCheckFill size={"20px"} /> </Link>
+            <Link style={{ display: `${toggle ? "none" : "block"}`, fontSize:"15px"}} to={"/propertyApproval"} > Property Approval </Link>
           </Box>
         </div>
       </div>

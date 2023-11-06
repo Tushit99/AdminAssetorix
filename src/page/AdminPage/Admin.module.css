@@ -1,0 +1,20 @@
+.adminone {
+  margin: 20px auto;
+  width: 96%;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.boxinfo {
+  padding: 10px; 
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;  
+  text-align: left; 
+  display: grid; 
+  gap: 4px; 
+}
+
+.boxinfo p span { 
+  font-weight: 700;
+}

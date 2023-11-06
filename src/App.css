@@ -1,22 +1,22 @@
 .App {
-  text-align: center; 
-  display: flex;   
+  text-align: center;
+  display: flex;
   min-height: 100vh; 
 }
 
-*::selection{
-  background-color: rgb(255, 196, 0); 
-  color: rgb(0, 0, 0); 
+*::selection {
+  background-color: rgb(255, 196, 0);
+  color: rgb(0, 0, 0);
 }
 
-select *{
-  background-color: white; 
-  color: black; 
+select * {
+  background-color: white;
+  color: black;
 }
 
-.App>div:nth-child(1){
-  transition: all 0.4s ease-in-out;  
-  border: 1px solid rgb(215, 215, 215) ;  
+.App > div:nth-child(1) {
+  transition: all 0.4s ease-in-out;
+  border: 1px solid rgb(215, 215, 215);
 }
 
 /* .App>div:nth-child(2)>*{
@@ -24,40 +24,49 @@ select *{
   transition: all 1s ease-in-out;   
 } */
 
-.theam_btn{ 
-  font-weight: bolder; 
+.theam_btn {
+  font-weight: bolder;
   width: 26px;
-  height: 26px; 
-  padding: 5px; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  border-radius: 50%;     
+  height: 26px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
-.smother{ 
+.smother {
   transition: justify-content 4s ease-in-out;
 }
 
 .leftjustified {
-  justify-content: flex-start;  
+  justify-content: flex-start;
 }
 
-.rightjustified { 
-  justify-content: flex-end; 
-
+.rightjustified {
+  justify-content: flex-end;
 }
 
-.dark{
-  background-color: rgb(18, 25, 38) ; 
-  color: white;  
+.dark {
+  background-color: rgb(18, 25, 38);
+  color: white;
+  transition: all 1s;
+}
+
+.light {
+  background-color: rgb(248, 249, 254);
+  color: rgb(18, 25, 38);
+  transition: all 1s;
+}
+
+.darkbt {
+  background-color: rgb(255, 255, 255);
+  color: rgb(255, 0, 0);
   transition: all 1s; 
 }
 
-.light{
-  background-color: white; 
-  color: rgb(18, 25, 38); 
-  transition: all 1s;  
+.lightbt {
+  background-color: rgb(255, 255, 255);
+  color: rgb(4, 80, 222);
+  transition: all 1s;
 }
-
-
