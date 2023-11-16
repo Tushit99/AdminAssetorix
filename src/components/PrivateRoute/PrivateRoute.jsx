@@ -4,10 +4,12 @@ import { useNavigate } from 'react-router-dom';
 
 const PrivateRoute = ({ children }) => {
     const userdetail = useSelector((state) => state.admindetail);
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
 
-    if (userdetail.id.length<=1) {  
-        return navigate("/login"); 
+    console.log(userdetail,); 
+
+    if (userdetail.id) {  
+        return navigate("/panel"); 
     }
     else {
         return children

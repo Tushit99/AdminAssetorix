@@ -1,9 +1,9 @@
-.headbox{
+/* .headbox{
   background-image: url("./backimg.png"); 
   background-size: cover;  
   background-repeat: no-repeat;  
   background-position: center center;
-}
+} */ 
 
 .slideInLeft {
   transition: transform 0.2s ease-in-out;

@@ -4,19 +4,18 @@ import MainRoute from "./components/MainRoute/MainRoute";
 import Navbar from "./components/Navbaar/Navbar";
 import TheamPage from "./page/TheamPage/TheamPage";
 import { Box } from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";  
+import { useDispatch, useSelector } from "react-redux";
 import { adminPrelogin } from "./redux/admin/action";
 import Loader from "./components/Loader/Loader";
 import { useNavigate } from "react-router-dom";
 import UserDetailInfo from "./components/UserDetail/UserDetailInfo";
-
 
 function App() {
   const userdetail = useSelector((state) => state.admindetail);
   const [toggle, setToggle] = useState(false);
   const [backgroundcolor, setbackgroundcolor] = useState("light");
   const dispatch = useDispatch();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -38,14 +37,13 @@ function App() {
 
     if (id && token) {
       console.log("skjvnsjn", id, token);
-      dispatch(adminPrelogin(obj)); 
+      dispatch(adminPrelogin(obj));
     }
 
-    if(userdetail.name.length>0){
+    if (userdetail.name.length > 0) {
       console.log("skjvnsjn", id, token);
-      navigate("/");  
+      navigate("/");
     }
-
   }, []);
 
   const handlechange = () => {
@@ -55,12 +53,14 @@ function App() {
   };
 
   return (
-    <> 
+    <>
       {userdetail.isLoading ? (
         <Loader />
       ) : (
-        <Box> 
-          <UserDetailInfo backgroundcolor={backgroundcolor} />
+        <Box>
+          {userdetail.name.length>0 && (
+            <UserDetailInfo backgroundcolor={backgroundcolor} /> 
+          )}
           {userdetail?.token?.length > 0 ? (
             <Box as={"div"} className={`${"App"} ${backgroundcolor}`}>
               <div style={{ flex: `${toggle ? 1 : 4}` }}>
@@ -80,7 +80,7 @@ function App() {
               </div>
             </Box>
           ) : (
-            <MainRoute /> 
+            <MainRoute />
           )}
         </Box>
       )}

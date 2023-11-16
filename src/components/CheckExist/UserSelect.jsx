@@ -19,7 +19,7 @@ const UserSelect = () => {
     return (
         <Box display={"flex"} className={style.headbox} minH={"100vh"} alignItems={"center"} justifyContent={"center"}>   
             <Image 
-            src={"https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"} 
+            src={"https://images.unsplash.com/photo-1610465299993-e6675c9f9efa?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} 
             alt="nature image"  
             position={"fixed"} 
             top={0} 

@@ -14,8 +14,8 @@ const AdminPage = () => {
   const [data, setData] = useState([]);
   const [userRole, setUserRole] = useState("");
   const [inp, setInp] = useState(Inputdetail || "");
-  const [page, setPage] = useState(prePage || 1);  
-  const [loading, setLoading] = useState(false);   
+  const [page, setPage] = useState(prePage || 1);
+  const [loading, setLoading] = useState(false);
 
   const allAdmin = async () => {
     try {
@@ -23,30 +23,30 @@ const AdminPage = () => {
       // let token = localStorage.getItem("astadToken");
 
       let obj = {
-        id: userdetail.id, 
-        authorization: userdetail.token, 
-        'Content-Type': 'application/json', 
+        id: userdetail.id,
+        authorization: userdetail.token,
+        'Content-Type': 'application/json',
       };
-      setLoading(true); 
+      setLoading(true);
       await axios
         .get(`${process.env.REACT_APP_URL}/admin/all`, {
           headers: obj,
         })
         .then((e) => {
-          setData(e.data.data);  
-          setLoading(false);  
+          setData(e.data.data);
+          setLoading(false);
         })
-        .catch((err) =>{
-          console.log(err); 
-          setLoading(false);   
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
         });
     } catch (error) {
       console.log(error);
-      setLoading(false);   
+      setLoading(false);
     }
   };
 
-  console.log(userdetail); 
+  console.log(userdetail);
 
   const handleBlocking = async (myid, status) => {
     try {
@@ -54,24 +54,24 @@ const AdminPage = () => {
       // let token = localStorage.getItem("astadToken");
 
       let obj = {
-        id: userdetail.id, 
-        authorization: userdetail.token, 
+        id: userdetail.id,
+        authorization: userdetail.token,
         'Content-Type': 'application/json',
       };
 
-      let body = { 
-        id:myid,
+      let body = {
+        id: myid,
         status
       }
 
-      setLoading(true);   
+      setLoading(true);
       await axios.post(`${process.env.REACT_APP_URL}/admin/block`, body, { headers: obj }).then((e) => {
-        console.log(e.data); 
-        setLoading(false);   
+        console.log(e.data);
+        setLoading(false);
       })
-    } catch (err) { 
-      console.log(err); 
-      setLoading(false);   
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
     }
   }
 
@@ -88,7 +88,7 @@ const AdminPage = () => {
     setSearchParams(obj);
 
     allAdmin();
- 
+
 
   }, [inp, page, userRole, setSearchParams]);
 
@@ -102,8 +102,13 @@ const AdminPage = () => {
           <AdminDetail key={e._id} e={e} handleBlocking={handleBlocking} />
         ))}
       </Box>
+      <div style={{ textAlign: "end" }}></div>
     </Box>
   );
+
 };
 
 export default AdminPage;
+
+
+

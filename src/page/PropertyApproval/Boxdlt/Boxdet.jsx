@@ -16,7 +16,7 @@ const Boxdet = ({ e, handleChangeState, disabled }) => {
           <Text> Country: {e.address.country} </Text>
         </Box>
         <Box display={"grid"} gap={2}>
-          {disabled == "Blocked" ? <>
+          {disabled == "Blocked" ? <> 
             <Button
               borderRadius={3}
               colorScheme='orange'

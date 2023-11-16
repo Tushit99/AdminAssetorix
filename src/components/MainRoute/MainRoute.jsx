@@ -21,7 +21,7 @@ const MainRoute = () => {
             <Home />
           </PrivateRoute>
         } />
-        <Route path='/panal' element={<UserSelect />} />
+        <Route path='/panel' element={<UserSelect />} />
         <Route path='/admin' element={
           <PrivateRoute>
             <AdminPage />
