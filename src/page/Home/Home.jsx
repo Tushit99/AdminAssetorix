@@ -9,24 +9,31 @@ const Home = () => {
   const dispatch = useDispatch();  
   const navigate = useNavigate(); 
 
-  useEffect(() => {
-    let id = localStorage.getItem("astadid") || undefined ;
-    let token = localStorage.getItem("astadToken") || undefined ;
+  useEffect(() => { 
 
-    let obj = {
-      id,
-      authorization: token,
-    };
-    
-    console.log(id, token); 
-
-    if (id && token) {  
-      console.log("skjvnsjn", id, token);  
-      dispatch(adminPrelogin(obj));
-    }  
+    if(userdetail.id && userdetail.token){
+      navigate("/"); 
+    } 
     else{
-      navigate("/panel"); 
+      let id = localStorage.getItem("astadid") || undefined ;
+      let token = localStorage.getItem("astadToken") || undefined ;
+  
+      let obj = {
+        id,
+        authorization: token,
+      };
+      
+      console.log(id, token); 
+  
+      if (id && token) {  
+        console.log("skjvnsjn", id, token);  
+        dispatch(adminPrelogin(obj));
+      }  
+      else{
+        navigate("/panel"); 
+      } 
     }
+
   }, [])
   
   useEffect(() => {

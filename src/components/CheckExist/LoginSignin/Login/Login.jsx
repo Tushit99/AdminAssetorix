@@ -48,13 +48,14 @@ const Login = () => {
             mobile: numb,
             password: pass,
         }
-        dispatch(userLoinAdmin(obj));
+        console.log(obj); 
+        dispatch(userLoinAdmin(obj)); 
     }
 
     useEffect(() => {
         let id = localStorage.getItem("astadid");
         let token = localStorage.getItem("astadToken");
-
+ 
         let obj = {
             id,
             authorization: token,

@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Heading, Select, Text } from '@chakra-ui/react'; // Import Text from Chakra UI
+import { Box, Heading } from '@chakra-ui/react'; // Import Text from Chakra UI
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';

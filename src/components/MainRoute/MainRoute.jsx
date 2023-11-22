@@ -28,7 +28,7 @@ const MainRoute = () => {
           </PrivateRoute>
         } />
         <Route path='/user' element={
-          <PrivateRoute>
+          <PrivateRoute> 
             <UserPage />
           </PrivateRoute>
         } />
