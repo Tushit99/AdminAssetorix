@@ -24,8 +24,7 @@ const Blocked = ({datachange,setLoader}) => {
 
       await axios.get(`${process.env.REACT_APP_URL}/admin/verificationStateList?adminState=Blocked`, {
         headers: obj,
-      }).then((e) => {
-        console.log(e.data.data);
+      }).then((e) => { 
         setProperty(e.data.data);
       })
     } catch (err) {

@@ -11,6 +11,7 @@ const Pending = ({datachange,setLoader}) => {
   const [property, setProperty] = useState([]);
 
   const propertydetail = async () => {
+    setLoader(true); 
     try {
       let id = localStorage.getItem("astadid");
       let token = localStorage.getItem("astadToken");
@@ -23,12 +24,12 @@ const Pending = ({datachange,setLoader}) => {
 
       await axios.get(`${process.env.REACT_APP_URL}/admin/verificationStateList?adminState=Pending`, {
         headers: obj,
-      }).then((e) => {
-        console.log(e.data);
-        setProperty(e.data.data); 
+      }).then((e) => { 
+        setProperty(e.data.data);  
+        setLoader(false);  
       })
     } catch (err) {
-      console.log(err);
+      setLoader(false);   
     }
   } 
 

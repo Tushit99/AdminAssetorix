@@ -75,7 +75,11 @@ const Login = () => {
             }
         }
 
-    }, [])
+    }, []); 
+
+    useEffect(()=>{
+
+    },[detail.isError]); 
 
     return (
         <Box>

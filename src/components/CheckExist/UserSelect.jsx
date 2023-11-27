@@ -1,20 +1,28 @@
 import { Box, Heading, Image, Tooltip } from '@chakra-ui/react';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BiSolidUserPlus } from 'react-icons/bi';
 import { FaUserCog } from 'react-icons/fa';
 import style from "./adm.module.css";
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-const UserSelect = () => {
-    const navigate = useNavigate();
+const UserSelect = () => { 
+    const userdetail = useSelector((state)=> state.admindetail);  
+    const navigate = useNavigate(); 
 
     const handlePageSignup = () => {
-        navigate("/signup")
+        navigate("/signup"); 
     }
 
     const handlePageLogin = () => {
         navigate("/login");
-    }
+    } 
+
+    useEffect(()=>{
+        if(userdetail.name){
+            navigate("/"); 
+        }
+    },[]); 
 
     return (
         <Box display={"flex"} className={style.headbox} minH={"100vh"} alignItems={"center"} justifyContent={"center"}>   

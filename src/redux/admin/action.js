@@ -3,6 +3,7 @@ import {
   USER_DATA_ERROR,
   USER_DATA_LOADING,
   USER_LOGIN,
+  USER_LOGOUT,
   USER_SIGUP,
 } from "./actionType";
 
@@ -19,7 +20,7 @@ export const userRegisterAdmin = (param) => async (dispatch) => {
         return res.data;
       });
   } catch (err) {
-    dispatch({ type: USER_DATA_ERROR });
+    dispatch({ type: USER_DATA_ERROR, payload: err });
   }
 };
 
@@ -36,15 +37,17 @@ export const userLoinAdmin = (param) => async (dispatch) => {
         return res.data;
       });
   } catch (err) {
-    dispatch({ type: USER_DATA_ERROR });  
+    console.log(err);
+    dispatch({ type: USER_DATA_ERROR, payload: err });
   }
 };
 
 export const adminPrelogin = (param) => async (dispatch) => {
   try {
     dispatch({ type: USER_DATA_LOADING });
-    await axios.get(`${process.env.REACT_APP_URL}/admin/`, { headers: param })
-      .then((res) => { 
+    await axios
+      .get(`${process.env.REACT_APP_URL}/admin/`, { headers: param })
+      .then((res) => {
         let id = localStorage.getItem("astadid");
         let token = localStorage.getItem("astadToken");
         localStorage.setItem("astadName", res.data.name);
@@ -53,6 +56,10 @@ export const adminPrelogin = (param) => async (dispatch) => {
       });
     // console.log(res);
   } catch (err) {
-    dispatch({ type: USER_DATA_ERROR }); 
+    dispatch({ type: USER_DATA_ERROR });
   }
+};
+
+export const adminLogout = () => () => {
+  dispatch({ type: USER_LOGOUT });   
 };

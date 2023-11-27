@@ -8,10 +8,11 @@ import Boxdet from '../Boxdlt/Boxdet';
 
 
 
-const Approved = ({datachange,setLoader}) => {
-  const [property, setProperty] = useState([]); 
+const Approved = ({ datachange, setLoader }) => {
+  const [property, setProperty] = useState([]);
 
   const propertydetail = async () => {
+    setLoader(true);
     try {
       let id = localStorage.getItem("astadid");
       let token = localStorage.getItem("astadToken");
@@ -25,16 +26,16 @@ const Approved = ({datachange,setLoader}) => {
       await axios.get(`${process.env.REACT_APP_URL}/admin/verificationStateList?adminState=Approved`, {
         headers: obj,
       }).then((e) => {
-        console.log(e.data.data);
         setProperty(e.data.data);
+        setLoader(false);  
       })
     } catch (err) {
-      console.log(err);
+      setLoader(false);   
     }
   }
 
-  const handleChangeState = async (propertyId,status) => { 
-    setLoader(true); 
+  const handleChangeState = async (propertyId, status) => {
+    setLoader(true);
     let id = localStorage.getItem("astadid");
     let token = localStorage.getItem("astadToken");
 
@@ -49,15 +50,15 @@ const Approved = ({datachange,setLoader}) => {
         status
       }
       await axios.post(`${process.env.REACT_APP_URL}/admin/verificationState`, body, { headers: obj }).then((e) => {
-        console.log(e.data); 
-        setLoader(false); 
+        console.log(e.data);
+        setLoader(false);
       })
     } catch (err) {
-      console.log(err); 
-      setLoader(false); 
-    } 
-    propertydetail(); 
-    setLoader(false); 
+      console.log(err);
+      setLoader(false);
+    }
+    propertydetail();
+    setLoader(false);
   }
 
   useEffect(() => {
@@ -66,7 +67,7 @@ const Approved = ({datachange,setLoader}) => {
 
   return (
     <Box>
-        <Box className={style.topsection}>
+      <Box className={style.topsection}>
         {property.map((e) => (
           <Boxdet e={e} key={e._id} handleChangeState={handleChangeState} disabled={"Approved"} />
         ))}

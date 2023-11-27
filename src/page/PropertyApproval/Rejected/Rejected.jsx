@@ -10,7 +10,8 @@ import Boxdet from '../Boxdlt/Boxdet';
 const Rejected = ({datachange, setLoader}) => {
   const [property, setProperty] = useState([]); 
 
-  const propertydetail = async () => {
+  const propertydetail = async () => { 
+    setLoader(true);   
     try {
       let id = localStorage.getItem("astadid");
       let token = localStorage.getItem("astadToken");
@@ -23,12 +24,12 @@ const Rejected = ({datachange, setLoader}) => {
 
       await axios.get(`${process.env.REACT_APP_URL}/admin/verificationStateList?adminState=Rejected`, {
         headers: obj,
-      }).then((e) => {
-        console.log(e.data.data);
-        setProperty(e.data.data);
+      }).then((e) => { 
+        setProperty(e.data.data);  
+        setLoader(false);   
       })
     } catch (err) {
-      console.log(err);
+      setLoader(false);   
     }
   } 
 

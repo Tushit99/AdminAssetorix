@@ -10,7 +10,7 @@ import GridLoader from "react-spinners/GridLoader";
 
 const PropertyApproval = () => {
     const [datachange, setDataChange] = useState(false);
-    const [loader, setLoader] = useState(false);
+    const [loader, setLoader] = useState(false); 
 
     return (
         <Box position={"relative"}> 
@@ -26,7 +26,7 @@ const PropertyApproval = () => {
                         <Tab color={"auto"} _selected={{ backgroundColor: "rgb(1,1,1)", color: "white" }} borderRadius={0} padding={"6px 20px"} > Blocked </Tab>
                         <Tab color={"auto"} _selected={{ backgroundColor: "rgb(0, 183, 255)", color: "white" }} borderRadius={0} padding={"6px 20px"} > Sold </Tab>
                     </TabList>
-                    <TabPanels maxWidth={"100%"}>
+                    <TabPanels maxWidth={"100%"}> 
                         <TabPanel maxWidth={"100%"}>
                             <Pending datachange={datachange} setLoader={setLoader} />
                         </TabPanel>
@@ -62,7 +62,7 @@ const PropertyApproval = () => {
                     <GridLoader size={35} color="#36d7b7" />
                     <Text  alignItems={"center"} fontSize={"large"}> Loading... </Text>
                 </Box>
-            </Box>
+            </Box> 
         </Box>
     )
 }

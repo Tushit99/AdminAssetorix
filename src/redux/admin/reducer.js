@@ -9,6 +9,7 @@ import {
 const initialState = {
   isLoading: false,
   isError: false, 
+  error: "", 
   name: "",
   id: "",
   token: "",
@@ -58,6 +59,7 @@ export const reducer = (state = initialState, { type, payload }) => {
         isLoading: false,
         isError: false,
       };
+      
     default:
       return state;
   }

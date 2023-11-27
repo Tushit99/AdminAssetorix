@@ -7,10 +7,11 @@ import style from "../Propertystate.module.css";
 import Boxdet from '../Boxdlt/Boxdet';
 
 
-const Sold = ({datachange, setLoader}) => {
-  const [property, setProperty] = useState([]); 
+const Sold = ({ datachange, setLoader }) => {
+  const [property, setProperty] = useState([]);
 
   const propertydetail = async () => {
+    setLoader(true);
     try {
       let id = localStorage.getItem("astadid");
       let token = localStorage.getItem("astadToken");
@@ -24,15 +25,15 @@ const Sold = ({datachange, setLoader}) => {
       await axios.get(`${process.env.REACT_APP_URL}/admin/verificationStateList?adminState=Sold`, {
         headers: obj,
       }).then((e) => {
-        console.log(e.data.data);
         setProperty(e.data.data);
+        setLoader(false); 
       })
-    } catch (err) {
-      console.log(err);
+    } catch (err) { 
+      setLoader(false);  
     }
   }
 
-  const handleChangeState = async (propertyId,status) => { 
+  const handleChangeState = async (propertyId, status) => {
     setLoader(true);
     let id = localStorage.getItem("astadid");
     let token = localStorage.getItem("astadToken");
@@ -48,15 +49,15 @@ const Sold = ({datachange, setLoader}) => {
         status
       }
       await axios.post(`${process.env.REACT_APP_URL}/admin/verificationState`, body, { headers: obj }).then((e) => {
-        console.log(e.data); 
+        console.log(e.data);
         setLoader(false);
       })
     } catch (err) {
-      console.log(err); 
-      setLoader(false); 
-    } 
-    propertydetail();  
-    setLoader(false); 
+      console.log(err);
+      setLoader(false);
+    }
+    propertydetail();
+    setLoader(false);
   }
 
   useEffect(() => {
