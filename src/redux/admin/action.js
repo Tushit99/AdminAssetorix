@@ -60,6 +60,6 @@ export const adminPrelogin = (param) => async (dispatch) => {
   }
 };
 
-export const adminLogout = () => () => {
+export const adminLogout = () => (dispatch) => {
   dispatch({ type: USER_LOGOUT });   
 };
