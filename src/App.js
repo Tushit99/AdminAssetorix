@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     let color = localStorage.getItem("bgcolor");
     if (color === "dark" || color === "light") {
-      setbackgroundcolor(color);
+      setbackgroundcolor(color); 
     }
 
     let id = localStorage.getItem("astadid");
@@ -43,9 +43,9 @@ function App() {
     if (userdetail.token.length > 0) { 
       navigate("/");
     }
-    else{ 
+    else{  
       navigate("/panel"); 
-    }
+    } 
 
 
   }, []);

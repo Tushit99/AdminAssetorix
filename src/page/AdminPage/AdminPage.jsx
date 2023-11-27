@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import style from "./Admin.module.css";
 import AdminDetail from './AdminDetail';
+import Loader from '../../components/Loader/Loader';
 
 const AdminPage = () => {
   const userdetail = useSelector((state) => state.admindetail);
@@ -66,7 +67,7 @@ const AdminPage = () => {
       setLoading(true);
       await axios.post(`${process.env.REACT_APP_URL}/admin/block`, body, { headers: obj }).then((e) => {
         console.log(e);
-        firstCall();
+        // firstCall(); 
         setLoading(false);
       })
     } catch (err) {
@@ -93,7 +94,7 @@ const AdminPage = () => {
       setLoading(true);
       await axios.post(`${process.env.REACT_APP_URL}/admin/verifyUser`, body, { headers: obj }).then((e) => {
         console.log(e);
-        firstCall();
+        // firstCall();
         setLoading(false);
       });
     } catch (err) {
@@ -157,7 +158,10 @@ const AdminPage = () => {
         {data.map((e) => (
           <AdminDetail key={e._id} e={e} handleBlocking={handleBlocking} handleVerifieChange={handleVerifieChange} />
         ))}
-      </Box>
+      </Box> 
+      {/* loading box */} 
+      {loading && <Loader />} 
+      {userdetail.isLoading && <Loader />} 
       <div style={{ textAlign: "end" }}></div>
     </Box>
   );
