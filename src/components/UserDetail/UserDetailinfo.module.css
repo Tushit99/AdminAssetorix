@@ -1,6 +1,7 @@
 .headbox {
   /* background-color: rgba(255, 0, 0, 0.731);  */
-  transition: clip-path 0.4s ease-in-out; 
+  transition: clip-path 0.4s ease-in-out;
+  z-index: 100;
   clip-path: polygon(0 0, 100% 0, 100% 55%, 0 55%);
 }
 
@@ -25,7 +26,7 @@
   justify-content: center;
   flex-wrap: nowrap;
   /* border: 2px solid rgb(255, 255, 255); */
-  max-height: 26px; 
+  max-height: 26px;
   transition: width 0.3s ease-in-out;
 }
 
@@ -34,7 +35,7 @@
 }
 
 .headbox:hover {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 40% 100%, 40% 58%, 0 58%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 35% 100%, 35% 58%, 0 58%);
 }
 
 .headbox:hover .text {
@@ -45,15 +46,44 @@
   right: 40px;
 }
 
+/* heartBeat */ 
+
+.headtbeat {
+  -webkit-animation: rotate-center 2s ease-in-out infinite both;
+  animation: rotate-center 2s ease-in-out infinite both;
+} 
+
+@-webkit-keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
 /* option box */
 
 .options {
   position: relative;
-  left: 70px;
+  left: 60px;
 }
 
 .options > * {
+  background-color: white;
   border: 2px solid green;
   padding: 6px 6px 6px 15px;
-  border-radius: 20px; 
+  border-radius: 20px;
 }

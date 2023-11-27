@@ -40,10 +40,14 @@ function App() {
       dispatch(adminPrelogin(obj));
     }
 
-    if (userdetail.name.length > 0) {
-      console.log("skjvnsjn", id, token);
+    if (userdetail.token.length > 0) { 
       navigate("/");
     }
+    else{ 
+      navigate("/panel"); 
+    }
+
+
   }, []);
 
   const handlechange = () => {

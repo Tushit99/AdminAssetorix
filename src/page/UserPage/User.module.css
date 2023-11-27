@@ -1,7 +1,7 @@
 
 .userDetail{
     display: grid; 
-    grid-template-columns: repeat(4,1fr);    
+    grid-template-columns: repeat(3,1fr);    
 }
 
 .userDetail span{
@@ -9,11 +9,31 @@
 } 
 
 .fullbox{
-    box-shadow: rgba(100, 100, 111, 0.308) 0px 7px 29px 0px; 
-    padding: 10px; 
+    /* box-shadow: rgba(100, 100, 111, 0.308) 0px 7px 29px 0px;  */
+    padding: 20px; 
+    max-width: 100%; 
+    overflow: hidden; 
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;    
 }
 
- 
+.fullbox *{
+    max-width: 100%;  
+}
 
+.spacing{
+    padding: 0 4px ;
+} 
+
+.table *{
+    max-width: 100%; 
+}
+ 
+.overflow{  
+    /* border: 1px solid black;   */
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+}  
 
 

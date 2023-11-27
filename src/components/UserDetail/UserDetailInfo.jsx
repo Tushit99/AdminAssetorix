@@ -6,7 +6,7 @@ import style from "./UserDetailinfo.module.css";
 
 const UserDetailInfo = ({ backgroundcolor }) => {
   const userdetail = useSelector((state) => state.admindetail);
-  const [userinfo, setUserInfo] = useState({});
+  const [userinfo, setUserInfo] = useState({}); 
 
   const fetchMydata = async () => {
     try {
@@ -17,7 +17,7 @@ const UserDetailInfo = ({ backgroundcolor }) => {
 
       await axios.get(`${process.env.REACT_APP_URL}/admin/`, { headers: obj }).then((e) => {
         setUserInfo(e.data);
-
+        console.log(e.data);
       })
     } catch (err) {
       console.log(err);
@@ -29,13 +29,17 @@ const UserDetailInfo = ({ backgroundcolor }) => {
   }, []);
 
   return (
-    <Box position={"fixed"} top={1} right={0} className={style.headbox} >
-      <Box className={style.topbox}  border={`2px solid ${backgroundcolor == "light" ? "black" : "rgb(210, 171, 102)"}`} >
-        <Avatar size='sm' border={"1px solid white"} boxShadow={"rgba(255, 255, 255, 0.505) 0px 1px 7px 0px"} name={userinfo.name} src={userinfo.avatar} />
+    <Box
+      position={"fixed"}
+      top={1}
+      right={-2} 
+      className={style.headbox}  >
+      <Box className={style.topbox} border={`2px solid ${backgroundcolor == "light" ? "black" : "rgb(210, 171, 102)"}`} >
+        <Avatar size='sm' className={style.headtbeat} border={"1px solid white"} boxShadow={"rgba(255, 255, 255, 0.505) 0px 1px 7px 0px"} name={userinfo.name} src={userinfo.avatar} />
         <Text className={style.text} textColor={backgroundcolor == "light" ? "white" : "rgb(210, 171, 102)"}> {userinfo?.name?.length > 0 && userinfo.name.split(" ").at(0)} </Text>
-      </Box> 
-      <Box className={style.options} >
-        <Box cursor={"pointer"}>Logout</Box>  
+      </Box>
+      <Box className={style.options} > 
+        <Box cursor={"pointer"}>Logout</Box>
       </Box>
     </Box>
   )

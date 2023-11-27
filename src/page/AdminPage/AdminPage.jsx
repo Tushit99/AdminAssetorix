@@ -15,7 +15,7 @@ const AdminPage = () => {
   const [userRole, setUserRole] = useState("");
   const [inp, setInp] = useState(Inputdetail || "");
   const [page, setPage] = useState(prePage || 1);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); 
 
   const allAdmin = async () => {
     try {
@@ -44,7 +44,63 @@ const AdminPage = () => {
       console.log(error);
       setLoading(false);
     }
-  };
+  }; 
+
+  const handleBlockChange = async (userId, statement) => {
+    try {
+      // let id = localStorage.getItem("astadid");
+      // let token = localStorage.getItem("astadToken");
+
+      let obj = {
+        id: userdetail.id, 
+        authorization: userdetail.token, 
+        'Content-Type': 'application/json',
+      };
+
+      const body = {
+        id: userId,
+        status: statement
+      }
+
+      console.log(statement);
+      setLoading(true);
+      await axios.post(`${process.env.REACT_APP_URL}/admin/block`, body, { headers: obj }).then((e) => {
+        console.log(e);
+        firstCall();
+        setLoading(false);
+      })
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+    }
+  }
+
+  const handleVerifieChange = async (userId, validstate) => {
+    try {
+      // let id = localStorage.getItem("astadid");
+      // let token = localStorage.getItem("astadToken");
+
+      let obj = {
+        id: userdetail.id, 
+        authorization: userdetail.token, 
+        'Content-Type': 'application/json',
+      };
+
+      let body = {
+        id: userId,
+        status: validstate
+      }
+      setLoading(true);
+      await axios.post(`${process.env.REACT_APP_URL}/admin/verifyUser`, body, { headers: obj }).then((e) => {
+        console.log(e);
+        firstCall();
+        setLoading(false);
+      });
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+    }
+  }
 
   console.log(userdetail);
 
@@ -99,7 +155,7 @@ const AdminPage = () => {
       <Heading> Admin Detail </Heading>
       <Box className={style.adminone} >
         {data.map((e) => (
-          <AdminDetail key={e._id} e={e} handleBlocking={handleBlocking} />
+          <AdminDetail key={e._id} e={e} handleBlocking={handleBlocking} handleVerifieChange={handleVerifieChange} />
         ))}
       </Box>
       <div style={{ textAlign: "end" }}></div>

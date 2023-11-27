@@ -18,15 +18,16 @@ import {
 import style from "./Login.module.css";
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { adminPrelogin, userLoinAdmin } from '../../../../redux/admin/action';
 
-const Login = () => {
+const Login = () => { 
+    const detail = useSelector(state => state.admindetail);  
     const [numb, setNumb] = useState("");
     const [pass, setPass] = useState("");
     const [show, setShow] = useState(false);
     const [localSave, setLocalSave] = useState(false);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch(); 
 
     const handlePassShow = () => {
         setShow(!show);
