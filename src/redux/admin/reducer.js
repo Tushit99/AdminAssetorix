@@ -26,9 +26,10 @@ export const reducer = (state = initialState, { type, payload }) => {
       };
     case USER_DATA_ERROR:
       return {
-        ...state,
+        ...state, 
         isLoading: false,
         isError: true,
+        error: payload,  
       };
     case USER_SIGUP:
       return {

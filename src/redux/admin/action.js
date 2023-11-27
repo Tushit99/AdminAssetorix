@@ -20,7 +20,7 @@ export const userRegisterAdmin = (param) => async (dispatch) => {
         return res.data;
       });
   } catch (err) {
-    dispatch({ type: USER_DATA_ERROR, payload: err });
+    dispatch({ type: USER_DATA_ERROR, payload: err.response.data.msg });
   }
 };
 
@@ -34,11 +34,11 @@ export const userLoinAdmin = (param) => async (dispatch) => {
         localStorage.setItem("astadName", res.data.name);
         localStorage.setItem("astadToken", res.data.token);
         dispatch({ type: USER_LOGIN, payload: res.data });
-        return res.data;
-      });
+        return res.data;  
+      })
   } catch (err) {
-    console.log(err);
-    dispatch({ type: USER_DATA_ERROR, payload: err });
+    console.log(err);   
+    dispatch({ type: USER_DATA_ERROR, payload: err.response.data.msg });
   }
 };
 
@@ -56,10 +56,10 @@ export const adminPrelogin = (param) => async (dispatch) => {
       });
     // console.log(res);
   } catch (err) {
-    dispatch({ type: USER_DATA_ERROR });
+    dispatch({ type: USER_DATA_ERROR, payload: err.response.data.msg });
   }
 };
 
 export const adminLogout = () => (dispatch) => {
-  dispatch({ type: USER_LOGOUT });
+  dispatch({ type: USER_LOGOUT }); 
 };

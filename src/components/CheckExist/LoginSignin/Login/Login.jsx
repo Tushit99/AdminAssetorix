@@ -14,6 +14,7 @@ import {
     InputGroup,
     InputRightElement,
     Tooltip,
+    useToast,
 } from '@chakra-ui/react'
 import style from "./Login.module.css";
 import { useState } from 'react';
@@ -28,8 +29,9 @@ const Login = () => {
     const [pass, setPass] = useState("");
     const [show, setShow] = useState(false);
     const [localSave, setLocalSave] = useState(false);
-    const dispatch = useDispatch();
-    const navigate = useNavigate(); 
+    const dispatch = useDispatch(); 
+    const navigate = useNavigate();
+    const toast = useToast();   
 
     const handlePassShow = () => {
         setShow(!show);
@@ -45,27 +47,26 @@ const Login = () => {
         setLocalSave(!localSave);
     }
 
-    const hansdleSubmitData = (e) => { 
+    const hansdleSubmitData = (e) => {
         e.preventDefault();
         let obj = {
             mobile: numb,
             password: pass,
-        }
-        console.log(obj);
+        } 
         dispatch(userLoinAdmin(obj));
     }
 
     useEffect(() => {
 
         if (detail.id && detail.token) {
-            navigate("/");  
+            navigate("/");
         }
         else {
             let id = localStorage.getItem("astadid");
             let token = localStorage.getItem("astadToken");
 
             let obj = {
-                id, 
+                id,
                 authorization: token,
             };
 
@@ -75,12 +76,21 @@ const Login = () => {
             }
         }
 
-    }, []); 
+    }, []);
 
-    useEffect(()=>{
+    useEffect(() => { 
+        if(detail.error !=""){
+            toast({
+                title: "Error",
+                description: detail.error,  
+                status: 'warning',
+                duration: 3000,
+                isClosable: true, 
+            }); 
+        }
 
-    },[detail.isError]); 
-
+    }, [detail.error]); 
+ 
     return (
         <Box>
             <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
