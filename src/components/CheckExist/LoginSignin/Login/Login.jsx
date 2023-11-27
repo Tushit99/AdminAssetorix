@@ -20,14 +20,16 @@ import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { adminPrelogin, userLoinAdmin } from '../../../../redux/admin/action';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => { 
-    const detail = useSelector(state => state.admindetail);  
+const Login = () => {
+    const detail = useSelector(state => state.admindetail);
     const [numb, setNumb] = useState("");
     const [pass, setPass] = useState("");
     const [show, setShow] = useState(false);
     const [localSave, setLocalSave] = useState(false);
-    const dispatch = useDispatch(); 
+    const dispatch = useDispatch();
+    const navigate = useNavigate(); 
 
     const handlePassShow = () => {
         setShow(!show);
@@ -43,29 +45,36 @@ const Login = () => {
         setLocalSave(!localSave);
     }
 
-    const hansdleSubmitData = (e) => {
+    const hansdleSubmitData = (e) => { 
         e.preventDefault();
         let obj = {
             mobile: numb,
             password: pass,
         }
-        console.log(obj); 
-        dispatch(userLoinAdmin(obj)); 
+        console.log(obj);
+        dispatch(userLoinAdmin(obj));
     }
 
     useEffect(() => {
-        let id = localStorage.getItem("astadid");
-        let token = localStorage.getItem("astadToken");
- 
-        let obj = {
-            id,
-            authorization: token,
-        };
 
-        if (id && token) {
-            console.log("skjvnsjn", id, token);
-            dispatch(adminPrelogin(obj));
+        if (detail.id && detail.token) {
+            navigate("/");  
         }
+        else {
+            let id = localStorage.getItem("astadid");
+            let token = localStorage.getItem("astadToken");
+
+            let obj = {
+                id, 
+                authorization: token,
+            };
+
+            if (id && token) {
+                console.log("skjvnsjn", id, token);
+                dispatch(adminPrelogin(obj));
+            }
+        }
+
     }, [])
 
     return (
@@ -116,7 +125,7 @@ const Login = () => {
                                 <Text color={'blue.500'} cursor={"pointer"}>Forgot password?</Text>
                             </Stack>
                             <Button type={"submit"} colorScheme={'blue'} variant={'solid'}>
-                                Sign in
+                                Login
                             </Button>
                         </Stack>
                     </form>

@@ -36,7 +36,7 @@ export const userLoinAdmin = (param) => async (dispatch) => {
         return res.data;
       });
   } catch (err) {
-    dispatch({ type: USER_DATA_ERROR });
+    dispatch({ type: USER_DATA_ERROR });  
   }
 };
 
