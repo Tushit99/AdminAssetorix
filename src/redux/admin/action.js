@@ -44,8 +44,7 @@ export const adminPrelogin = (param) => async (dispatch) => {
   try {
     dispatch({ type: USER_DATA_LOADING });
     await axios.get(`${process.env.REACT_APP_URL}/admin/`, { headers: param })
-      .then((res) => {
-        console.log(res.data);
+      .then((res) => { 
         let id = localStorage.getItem("astadid");
         let token = localStorage.getItem("astadToken");
         localStorage.setItem("astadName", res.data.name);

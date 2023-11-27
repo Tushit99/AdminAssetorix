@@ -20,7 +20,7 @@
 .topbox .text {
   width: 0;
   font-size: medium;
-  overflow: hidden;
+  overflow: hidden; 
   display: flex;
   color: white;
   justify-content: center;
@@ -46,33 +46,7 @@
   right: 40px;
 }
 
-/* heartBeat */ 
-
-.headtbeat {
-  -webkit-animation: rotate-center 2s ease-in-out infinite both;
-  animation: rotate-center 2s ease-in-out infinite both;
-} 
-
-@-webkit-keyframes rotate-center {
-  0% {
-    -webkit-transform: rotate(0);
-    transform: rotate(0);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@keyframes rotate-center {
-  0% {
-    -webkit-transform: rotate(0);
-    transform: rotate(0);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
+/* heartBeat */  
 
 /* option box */
 

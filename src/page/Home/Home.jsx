@@ -10,29 +10,29 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+ 
+    // if (userdetail.id == "" || userdetail.role == "") {
+    //   let id = localStorage.getItem("astadid") || undefined;
+    //   let token = localStorage.getItem("astadToken") || undefined;
 
-    if (userdetail.id == "" || userdetail.role == "") {
-      let id = localStorage.getItem("astadid") || undefined;
-      let token = localStorage.getItem("astadToken") || undefined;
+    //   console.log(userdetail);
 
-      console.log(userdetail);
+    //   let obj = {
+    //     id,
+    //     authorization: token, 
+    //   };
 
-      let obj = {
-        id,
-        authorization: token,
-      };
+    //   console.log(id, token);
+    //   console.log(userdetail); 
 
-      console.log(id, token);
-      console.log(userdetail); 
-
-      if (id && token) {
-        console.log("skjvnsjn", id, token);
-        dispatch(adminPrelogin(obj));
-      }
-      else {
-        navigate("/panel");
-      }
-    }
+    //   if (id && token) {
+    //     console.log("skjvnsjn", id, token);
+    //     dispatch(adminPrelogin(obj));
+    //   }
+    //   else {
+    //     navigate("/panel");
+    //   }
+    // } 
 
   }, [])
 

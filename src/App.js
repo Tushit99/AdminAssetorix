@@ -35,8 +35,7 @@ function App() {
       authorization: token,
     };
 
-    if (id && token) {
-      console.log("skjvnsjn", id, token);
+    if (id && token) { 
       dispatch(adminPrelogin(obj));
     }
 
@@ -53,7 +52,7 @@ function App() {
   const handlechange = () => {
     const newColor = backgroundcolor === "dark" ? "light" : "dark";
     setbackgroundcolor(newColor);
-    localStorage.setItem("bgcolor", newColor);
+    localStorage.setItem("bgcolor", newColor); 
   };
 
   return (

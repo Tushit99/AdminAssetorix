@@ -16,12 +16,11 @@ const UserDetailInfo = ({ backgroundcolor }) => {
       }
 
       await axios.get(`${process.env.REACT_APP_URL}/admin/`, { headers: obj }).then((e) => {
-        setUserInfo(e.data);
-        console.log(e.data);
+        setUserInfo(e.data); 
       })
     } catch (err) {
       console.log(err);
-    }
+    } 
   }
 
   useEffect(() => {
@@ -35,11 +34,11 @@ const UserDetailInfo = ({ backgroundcolor }) => {
       right={-2} 
       className={style.headbox}  >
       <Box className={style.topbox} border={`2px solid ${backgroundcolor == "light" ? "black" : "rgb(210, 171, 102)"}`} >
-        <Avatar size='sm' className={style.headtbeat} border={"1px solid white"} boxShadow={"rgba(255, 255, 255, 0.505) 0px 1px 7px 0px"} name={userinfo.name} src={userinfo.avatar} />
+        <Avatar size='sm' border={"1px solid white"} boxShadow={"rgba(255, 255, 255, 0.505) 0px 1px 7px 0px"} name={userinfo.name} src={userinfo.avatar} />
         <Text className={style.text} textColor={backgroundcolor == "light" ? "white" : "rgb(210, 171, 102)"}> {userinfo?.name?.length > 0 && userinfo.name.split(" ").at(0)} </Text>
-      </Box>
-      <Box className={style.options} > 
-        <Box cursor={"pointer"}>Logout</Box>
+      </Box> 
+      <Box className={style.options} >  
+        <Box cursor={"pointer"} >Logout</Box> 
       </Box>
     </Box>
   )
