@@ -7,7 +7,7 @@ import { Box } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { adminPrelogin } from "./redux/admin/action";
 import Loader from "./components/Loader/Loader";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import UserDetailInfo from "./components/UserDetail/UserDetailInfo";
 
 function App() {
@@ -15,7 +15,8 @@ function App() {
   const [toggle, setToggle] = useState(false);
   const [backgroundcolor, setbackgroundcolor] = useState("light");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
+  const location = useLocation(); 
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -39,13 +40,14 @@ function App() {
       dispatch(adminPrelogin(obj));
     }
 
+    console.log(location,userdetail); 
+
     if (userdetail.token.length > 0) { 
-      navigate("/");
+      navigate("/"); 
     }
     else{  
-      navigate("/panel"); 
-    } 
-
+      navigate("/login", { state: { locationDetail: location } });   
+    }   
 
   }, []);
 
@@ -63,11 +65,11 @@ function App() {
         <Box>
           {userdetail.name.length>0 && (
             <UserDetailInfo backgroundcolor={backgroundcolor} /> 
-          )}
+          )} 
           {userdetail?.token?.length > 0 ? (
             <Box as={"div"} className={`${"App"} ${backgroundcolor}`}>
               <div style={{ flex: `${toggle ? 1 : 4}` }}>
-                <Navbar
+                <Navbar 
                   toggle={toggle}
                   backgroundcolor={backgroundcolor}
                   handleToggle={handleToggle}

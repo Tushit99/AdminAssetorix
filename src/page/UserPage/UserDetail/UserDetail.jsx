@@ -1,5 +1,15 @@
-import { Avatar, Badge, Box, Divider, Flex, Heading, Select, Table, TableContainer, Tbody, Td, Text, Tooltip, Tr } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
+import {
+    Avatar,
+    Badge,
+    Box,
+    Divider,
+    Flex,
+    Heading, 
+    Text,
+    Tooltip
+} from '@chakra-ui/react';
+import React,
+{ useEffect, useState } from 'react';
 import style from "../User.module.css";
 
 const UserDetail = ({ e }) => {
@@ -29,7 +39,7 @@ const UserDetail = ({ e }) => {
     }
 
     const accountday = (day) => {
-        let d1 = day.split(",")[0].substring(0,3).toLowerCase();
+        let d1 = day.split(",")[0].substring(0, 3).toLowerCase();
         return d1;
     }
 
@@ -37,8 +47,8 @@ const UserDetail = ({ e }) => {
         let d2 = convertdate.split(",")[2].split(" ");
 
         let time = d2[3].split(":");
-        let at = d2[4]; 
-        
+        let at = d2[4];
+
         let finaltime = `${time[0]}:${time[1]}`
 
         return `${finaltime} ${at}`;
@@ -58,7 +68,7 @@ const UserDetail = ({ e }) => {
         setUpDatedDay(accountday(e.lastUpdated));
         setLastLogDay(accountday(e.lastLogin));
 
-    }, []) 
+    }, [])
 
 
 
@@ -96,13 +106,13 @@ const UserDetail = ({ e }) => {
                         <Badge borderRadius={0} colorScheme='blue'> {createdDay} </Badge>
                         <Badge borderRadius={0} colorScheme='green'> {createdOn} </Badge>
                         <Badge borderRadius={0} colorScheme='purple'> {createdTime} </Badge>
-                    </Text> 
+                    </Text>
                 </Box>
                 <Box display={"flex"} flex={1}>
                     <Text flex={13} fontSize={"sm"} > <b>Updated</b> </Text>
                     <Text flex={2} >:</Text>
                     <Text flex={36} fontSize={"xs"} display={"flex"} alignItems={"center"} justifyContent={"space-around"} >
-                        <Badge borderRadius={0} colorScheme='blue'> {upDatedDay} </Badge> 
+                        <Badge borderRadius={0} colorScheme='blue'> {upDatedDay} </Badge>
                         <Badge borderRadius={0} colorScheme='green'> {lastUpDatedOn} </Badge>
                         <Badge borderRadius={0} colorScheme='purple'> {lastUpDatedTime} </Badge>
                     </Text>
@@ -112,13 +122,13 @@ const UserDetail = ({ e }) => {
                     <Text flex={2} >:</Text>
                     <Text flex={36} fontSize={"xs"} display={"flex"} alignItems={"center"} justifyContent={"space-around"} >
                         <Badge borderRadius={0} colorScheme='blue'> {lastLogDay} </Badge>
-                        <Badge borderRadius={0} colorScheme='green'> {lastLogIn} </Badge> 
+                        <Badge borderRadius={0} colorScheme='green'> {lastLogIn} </Badge>
                         <Badge borderRadius={0} colorScheme='purple'> {lastLogTime} </Badge>
                     </Text>
                 </Box>
             </Box>
 
-           
+
         </Box>
     )
 }

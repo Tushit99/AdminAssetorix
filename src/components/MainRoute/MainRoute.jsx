@@ -11,13 +11,17 @@ import ErrorPage from '../../page/Error/Error';
 import Home from '../../page/Home/Home';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PropertyApproval from '../../page/PropertyApproval/PropertyApproval';
+import ResidentialBuy from '../../page/Property/PropertyPages/ResidentialBuy';
+import ResidentialRent from '../../page/Property/PropertyPages/ResidentialRent';
+import CommercialBuy from '../../page/Property/PropertyPages/CommercialBuy';
+import CommercialRent from '../../page/Property/PropertyPages/CommercialRent';
 
 const MainRoute = () => {
   return (
     <div>
       <Routes>
         <Route path='/' element={
-          <PrivateRoute>
+          <PrivateRoute> 
             <Home />
           </PrivateRoute>
         } />
@@ -28,7 +32,7 @@ const MainRoute = () => {
           </PrivateRoute>
         } />
         <Route path='/user' element={
-          <PrivateRoute> 
+          <PrivateRoute>
             <UserPage />
           </PrivateRoute>
         } />
@@ -37,11 +41,37 @@ const MainRoute = () => {
             <Property />
           </PrivateRoute>
         } />
+
+        <Route path="/residential_Buy" element={
+          <PrivateRoute>
+            <ResidentialBuy />
+          </PrivateRoute>
+        } /> 
+
+        <Route path='/residential_Rent' element={
+          <PrivateRoute>
+            <ResidentialRent />
+          </PrivateRoute>
+        } />
+
+        <Route path='/commercial_Buy' element={
+          <PrivateRoute> 
+            <CommercialBuy />
+          </PrivateRoute>
+        } />
+
+        <Route path='/commercial_Rent' element={
+          <PrivateRoute>
+            <CommercialRent />
+          </PrivateRoute>
+        } /> 
+
         <Route path='/Postproperty' element={
           <PrivateRoute>
             <SellForm />
           </PrivateRoute>
-        } /> 
+        } />
+
 
         <Route path='/propertyApproval' element={<PropertyApproval />} />
 

@@ -9,9 +9,9 @@
 
 .boxinfo {
   padding: 10px; 
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;  
+  box-shadow: rgba(200, 200, 255, 0.336) 0px 1px 6px -1px, rgba(181, 181, 255, 0.432) 0px 2px 4px -1px;  
   text-align: left; 
-  display: flex; 
+  display: flex;  
   flex-direction: column;   
   gap: 4px; 
 }
@@ -19,3 +19,16 @@
 .boxinfo p span { 
   font-weight: 700;
 }
+
+@media screen and (max-width: 500px) {
+  .adminone {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 980px) {
+  .adminone {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+

@@ -38,7 +38,7 @@ export const userLoinAdmin = (param) => async (dispatch) => {
       })
   } catch (err) {
     console.log(err);   
-    dispatch({ type: USER_DATA_ERROR, payload: err.response.data.msg });
+    dispatch({ type: USER_DATA_ERROR, payload: err?.response?.data?.msg }); 
   }
 };
 

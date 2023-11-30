@@ -21,9 +21,9 @@ import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { adminPrelogin, userLoinAdmin } from '../../../../redux/admin/action';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = () => { 
     const detail = useSelector(state => state.admindetail);
     const [numb, setNumb] = useState("");
     const [pass, setPass] = useState("");
@@ -32,11 +32,16 @@ const Login = () => {
     const dispatch = useDispatch(); 
     const navigate = useNavigate();
     const toast = useToast();   
+    const location = useLocation();
+    const locationDetail = location.state?.locationDetail;
+
 
     const handlePassShow = () => {
         setShow(!show);
     }
-
+    
+    // console.log(locationDetail);   
+ 
     const handleNumberInput = (e) => {
         let val = e.target.value;
         let clear = val.replace(/[^0-9]/g, "");
@@ -59,7 +64,7 @@ const Login = () => {
     useEffect(() => {
 
         if (detail.id && detail.token) {
-            navigate("/");
+            navigate(locationDetail.pathname); 
         }
         else {
             let id = localStorage.getItem("astadid");

@@ -5,17 +5,18 @@ import axios from 'axios';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import Block from './Block';
 import { useSelector } from 'react-redux';
+import Varifies from './Varifies';
 
 
 const AdminDetail = ({ e, handleVerifieChange }) => { 
-    const userdetail = useSelector((state)=> state.admindetail);    
-    const [role, setRole] = useState("");
+    const userdetail = useSelector((state) => state.admindetail);
+    const [role, setRole] = useState(""); 
     const [changeRole, setChangeRole] = useState("");
     const [userIsBlocked, setIsBlocked] = useState(false);
     const { isOpen, onOpen, onClose } = useDisclosure()
     const cancelRef = useRef()
     const [loading, setLoadiong] = useState(false);
-    const [isblock, setBlock] = useState(false); 
+    const [isblock, setBlock] = useState(false);
     const [verifie, setVerifie] = useState(false);
     // date
     const [createdOn, setCreatedOn] = useState('');
@@ -30,7 +31,7 @@ const AdminDetail = ({ e, handleVerifieChange }) => {
     const [upDatedDay, setUpDatedDay] = useState("");
     const [lastLogDay, setLastLogDay] = useState("");
 
-    const [usermatch, setUserMatch] = useState(false);   
+    const [usermatch, setUserMatch] = useState(false);
 
 
     const accountdate = (convertdate) => {
@@ -114,9 +115,8 @@ const AdminDetail = ({ e, handleVerifieChange }) => {
     }
 
     // User Verifie code 
-    const handleVerifie = (id, e) => {
-        let val = e.target.value;
-        handleVerifieChange(id, val);
+    const handleVerifie = (id, e) => { 
+        handleVerifieChange(id, e);
     }
 
     useEffect(() => {
@@ -126,12 +126,11 @@ const AdminDetail = ({ e, handleVerifieChange }) => {
 
     useEffect(() => {
         setRole(e.role);
-        setIsBlocked(e.isBlocked); 
+        setIsBlocked(e.isBlocked);
 
-        console.log(userdetail.id == e._id); 
 
-        if(userdetail.id == e._id){
-            setUserMatch(true); 
+        if (userdetail.id == e._id) {
+            setUserMatch(true);
         }
 
     }, [])
@@ -149,7 +148,7 @@ const AdminDetail = ({ e, handleVerifieChange }) => {
             {/* listing */}
             <Box display={"flex"} alignItems={"center"} justifyContent={"left"} >
                 <Text className={style.overflow} flex={9} fontSize={"sm"}  > <b>Listing</b> </Text>
-                <Text className={style.overflow} flex={2} >:</Text> 
+                <Text className={style.overflow} flex={2} >:</Text>
                 <Text className={style.overflow} flex={36} > {e.listings} </Text>
             </Box>
             <Box display={"flex"} alignItems={"center"} justifyContent={"left"} >
@@ -231,20 +230,14 @@ const AdminDetail = ({ e, handleVerifieChange }) => {
                     </AlertDialogOverlay>
                 </AlertDialog>
                 {/* --------=========------- */}
-            </Box> 
-            <Box display={usermatch ? "none" : "block"}>   
-                <Box display={"flex"} alignItems={"center"} justifyContent={"flex-start"} >
-                    <Text width={"30%"} fontSize={"sm"} fontWeight={700}>Verified:</Text>
-                    <Select variant='outline' size={"sm"} value={verifie} onChange={(a) => handleVerifie(e._id, a)} >
-                        <option value={true}> True </option>
-                        <option value={false}> False </option>
-                    </Select>
-                </Box>
+            </Box>
+            <Box display={usermatch ? "none" : "block"}>
+                <Varifies handleVerifie={handleVerifie} verifie={verifie} e={e} /> 
             </Box>
             <Box display={usermatch ? "flex" : "none"} h={"100%"} alignItems={"center"} justifyContent={"center"} >
-                <Heading as={"h2"} size={"md"} textAlign={"center"}> My Profile Info </Heading> 
+                <Heading as={"h2"} size={"md"} textAlign={"center"}> My Profile Info </Heading>
             </Box>
-            <Box display={usermatch ? "none" : "block"}>   
+            <Box display={usermatch ? "none" : "block"}>
                 <Block blockid={e._id} userIsBlocked={userIsBlocked} setRole={setRole} setIsBlocked={setIsBlocked} />
             </Box>
         </Box>

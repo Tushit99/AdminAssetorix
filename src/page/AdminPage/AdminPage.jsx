@@ -16,7 +16,8 @@ const AdminPage = () => {
   const [userRole, setUserRole] = useState("");
   const [inp, setInp] = useState(Inputdetail || "");
   const [page, setPage] = useState(prePage || 1);
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);   
+
 
   const allAdmin = async () => {
     try {
@@ -45,7 +46,7 @@ const AdminPage = () => {
       console.log(error);
       setLoading(false);
     }
-  }; 
+  };
 
   const handleBlockChange = async (userId, statement) => {
     try {
@@ -53,8 +54,8 @@ const AdminPage = () => {
       // let token = localStorage.getItem("astadToken");
 
       let obj = {
-        id: userdetail.id, 
-        authorization: userdetail.token, 
+        id: userdetail.id,
+        authorization: userdetail.token,
         'Content-Type': 'application/json',
       };
 
@@ -77,13 +78,13 @@ const AdminPage = () => {
   }
 
   const handleVerifieChange = async (userId, validstate) => {
-    try {
+    try {    
       // let id = localStorage.getItem("astadid");
       // let token = localStorage.getItem("astadToken");
 
       let obj = {
-        id: userdetail.id, 
-        authorization: userdetail.token, 
+        id: userdetail.id,
+        authorization: userdetail.token,
         'Content-Type': 'application/json',
       };
 
@@ -93,8 +94,7 @@ const AdminPage = () => {
       }
       setLoading(true);
       await axios.post(`${process.env.REACT_APP_URL}/admin/verifyUser`, body, { headers: obj }).then((e) => {
-        console.log(e);
-        // firstCall();
+        allAdmin();
         setLoading(false);
       });
     } catch (err) {
@@ -102,8 +102,6 @@ const AdminPage = () => {
       setLoading(false);
     }
   }
-
-  console.log(userdetail);
 
   const handleBlocking = async (myid, status) => {
     try {
@@ -132,8 +130,6 @@ const AdminPage = () => {
     }
   }
 
-
-
   useEffect(() => {
     let obj = {};
 
@@ -146,10 +142,8 @@ const AdminPage = () => {
 
     allAdmin();
 
-
   }, [inp, page, userRole, setSearchParams]);
 
-  console.log(data);
 
   return (
     <Box marginTop={"20px"}>
@@ -158,10 +152,10 @@ const AdminPage = () => {
         {data.map((e) => (
           <AdminDetail key={e._id} e={e} handleBlocking={handleBlocking} handleVerifieChange={handleVerifieChange} />
         ))}
-      </Box> 
-      {/* loading box */} 
-      {loading && <Loader />} 
-      {userdetail.isLoading && <Loader />} 
+      </Box>
+      {/* loading box */}
+      {loading && <Loader />}
+      {userdetail.isLoading && <Loader />}
       <div style={{ textAlign: "end" }}></div>
     </Box>
   );

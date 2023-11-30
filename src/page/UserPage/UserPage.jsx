@@ -1,4 +1,4 @@
-import { Avatar, Box, Heading, Select, Text } from '@chakra-ui/react';
+import { Box, Heading} from '@chakra-ui/react';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import style from "./User.module.css";
